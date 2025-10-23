@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Handling Example</title>
+</head>
+<body>
+  <h2>Event Handling in JavaScript</h2>
+
+  <label for="username">Enter your name:</label>
+  <input type="text" id="username" placeholder="Type your name here">
+  <p id="showValue"></p>
+  <button id="myButton">Click Me</button>
+
+  <form id="myForm">
+    <input type="email" id="email" placeholder="Enter email" required>
+    <button type="submit">Submit Form</button>
+  </form>
+
+  <script>
+    
+    const btn = document.getElementById("myButton");
+    btn.addEventListener("click", function() {
+      alert("Button was clicked!");
+    });
+
+    const input = document.getElementById("username");
+    const display = document.getElementById("showValue");
+    input.addEventListener("input", function() {
+      display.textContent = "You are typing: " + input.value;
+    });
+
+    const form = document.getElementById("myForm");
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); 
+      const emailValue = document.getElementById("email").value;
+      alert("Form submitted! Email: " + emailValue);
+    });
+  </script>
+</body>
+</html>
