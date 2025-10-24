@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Es arrow function</title>
+</head>
+<body>
+  <h2>ES6 Features Demo</h2>
+  <p>Check the console for output.</p>
+
+  <script>
+    const name = "Haripriya";
+    let age = 21;
+    console.log(`My name is ${name} and I am ${age} years old.`);
+    function greet(user = "Guest", message = "Welcome to JavaScript!") {
+      console.log(`Hello ${user}, ${message}`);
+    }
+
+    greet(); 
+    greet("Haripriya", "Have a great day!");
+    
+    const colors = ["red", "green", "blue"];
+    const [first, second, third] = colors;
+    console.log(`First: ${first}, Second: ${second}, Third: ${third}`);
+
+    const person = { pname: "Ishwarya", pAge: 20, city: "Chennai" };
+    const { pname, pAge, city } = person;
+    console.log(`${pname} is ${pAge} years old and lives in ${city}.`);
+
+    const numbers = [1, 2, 3];
+    const copiedNumbers = [...numbers, 4, 5];
+    console.log("Copied Array:", copiedNumbers);
+
+    function sumAll(...nums) {
+      return nums.reduce((total, num) => total + num, 0);
+    }
+    console.log("Sum:", sumAll(1, 2, 3, 4, 5));
+
+    
+    const multiply = (a, b) => a * b;
+    const square = n => n * n;
+
+    console.log("Multiply:", multiply(3, 4));
+    console.log("Square:", square(5));
+
+    class Student {
+      constructor(name, course) {
+        this.name = name;
+        this.course = course;
+      }
+
+      displayInfo() {
+        console.log(`${this.name} is enrolled in ${this.course} course.`);
+      }
+    }
+
+    const student1 = new Student("Haripriya", "Web Development");
+    student1.displayInfo();
+  </script>
+</body>
+</html>
