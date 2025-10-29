@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Synchronous vs Asynchronous, Callbacks & Promises</title>
+</head>
+<body>
+  <h2>JavaScript: Sync vs Async, Callbacks, Promises</h2>
+  <p id="output"></p>
+
+  <script>
+    const output = document.getElementById("output");
+
+
+    output.innerHTML += "<b>Synchronous Execution:</b><br>";
+    console.log("Start");
+    output.innerHTML += "Start<br>";
+    console.log("Step 1");
+    output.innerHTML += "Step 1<br>";
+    console.log("End");
+    output.innerHTML += "End<br><br>";
+
+    
+    output.innerHTML += "<b>Asynchronous Execution:</b><br>";
+    console.log("Before Timeout");
+
+    
+    setTimeout(() => {
+      console.log("Printed after 2 seconds");
+      output.innerHTML += "Printed after 2 seconds<br>";
+    }, 2000);
+
+    
+    let count = 0;
+    const interval = setInterval(() => {
+      count++;
+      console.log("Counter:", count);
+      output.innerHTML += `Counter: ${count}<br>`;
+      if (count === 5) clearInterval(interval);
+    }, 1000);
+
+
+    function greet(name, callback) {
+      console.log("Hello " + name);
+      callback();
+    }
+
+    function afterGreet() {
+      console.log("Callback executed after greeting!");
+      output.innerHTML += "Callback executed after greeting!<br>";
+    }
+
+    greet("Haripriya", afterGreet);
+
+    
+    const myPromise = new Promise((resolve, reject) => {
+      let success = true; 
+
+      setTimeout(() => {
+        if (success) resolve("Promise Resolved Successfully!");
+        else reject("Promise Rejected!");
+      }, 2000);
+    });
+
+    myPromise
+      .then((message) => {
+        console.log(message);
+        output.innerHTML += message + "<br>";
+      })
+      .catch((error) => {
+        console.error(error);
+        output.innerHTML += error + "<br>";
+      });
+  </script>
+</body>
+</html>
